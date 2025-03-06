@@ -1,7 +1,7 @@
 {
-  "name": "ticketer",
+  "name": "auth",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/ticketer/src",
+  "sourceRoot": "apps/auth/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -11,12 +11,12 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/ticketer",
+        "outputPath": "dist/apps/auth",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/ticketer/src/main.ts",
-        "tsConfig": "apps/ticketer/tsconfig.app.json",
-        "assets": ["apps/ticketer/src/assets"],
+        "main": "apps/auth/src/main.ts",
+        "tsConfig": "apps/auth/tsconfig.app.json",
+        "assets": ["apps/auth/src/assets"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -28,7 +28,6 @@
       "configurations": {
         "development": {},
         "production": {
-          "generateLockfile": true,
           "esbuildOptions": {
             "sourcemap": false,
             "outExtension": {
@@ -43,15 +42,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "ticketer:build",
+        "buildTarget": "auth:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "ticketer:build:development"
+          "buildTarget": "auth:build:development"
         },
         "production": {
-          "buildTarget": "ticketer:build:production"
+          "buildTarget": "auth:build:production"
         }
       }
     },
@@ -62,7 +61,7 @@
     },
     "docker-build": {
       "dependsOn": ["build"],
-      "command": "docker build -f apps/ticketer/Dockerfile . -t ticketer"
+      "command": "docker build -f apps/auth/Dockerfile . -t auth"
     }
   }
 }
